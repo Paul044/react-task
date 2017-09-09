@@ -1,1 +1,1 @@
-# react-task
+# SPA on React
