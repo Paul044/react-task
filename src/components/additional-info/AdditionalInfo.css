@@ -1,0 +1,25 @@
+.additional-info {
+    height: 20px;
+    background-color: #f5f5f5;
+    padding: 20px 100px;
+}
+.additional-info label {
+    color: #0E0E0E
+}
+.filters {
+    float: right;
+    display: block;
+}
+
+.filters span {
+    margin: 5px;
+    color: #0E0E0E;
+    text-transform: none;
+}
+.filters span:hover {
+    color:#f55263;
+    cursor: pointer;
+}
+.filters span.active {
+    color:#f55263;
+}

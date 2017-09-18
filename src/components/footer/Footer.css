@@ -1,0 +1,15 @@
+.logo {
+    color: #f55263;
+    font-size: 20px;
+    padding: 20px 100px 0 100px;
+}
+.footer {
+    background-color: #414141;
+    height: 60px;
+    clear: both;
+}
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+ }
