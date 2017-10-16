@@ -4,6 +4,8 @@ import DetailPage from 'components/detail-page/DetailPage';
 import SearchForm from 'components/search-form/SearchForm';
 import AdditionalInfo from 'components/additional-info/AdditionalInfo';
 import { AppStates } from 'components/app/app.constants';
+import { Route, Switch} from 'react-router-dom';
+
 import * as s from './Header.css';
 
 class Header extends React.Component {
@@ -20,14 +22,7 @@ class Header extends React.Component {
                         </button>}
                 </div>
 
-                {this.props.show ?
-                    <DetailPage
-                        show={this.props.show}
-                    /> :
-                    <SearchForm
-                        searchBtnClick={this.props.searchBtnClick}
-                    />
-                }
+                {this.props.children}
                 <AdditionalInfo
                     appState={this.props.appState}
                     show={this.props.show}

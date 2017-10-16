@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import * as s from './MovieItem.css';
 
 class MovieItem extends React.Component {
@@ -8,11 +10,13 @@ class MovieItem extends React.Component {
     }
     render() {
         return (<div className={s.movieItem}>
-            <img
-                onClick={this.onImageClick.bind(this)}
-                src={this.props.movie.poster}
-                alt=""
-            />
+            <Link to={`/film/${this.props.movie.show_id}`}>
+                <img
+                    onClick={this.onImageClick.bind(this)}
+                    src={this.props.movie.poster}
+                    alt=""
+                />
+            </Link>
             <div>
                 <span className={s.showTitle}>{this.props.movie.show_title}</span>
                 <span className={s.releaseYear}>{this.props.movie.release_year}</span>

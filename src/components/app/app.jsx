@@ -1,6 +1,9 @@
 import React from 'react';
 import Header from 'components/header/Header';
 import Footer from 'components/footer/Footer';
+import DetailPage from 'components/detail-page/DetailPage';
+import SearchForm from 'components/search-form/SearchForm';
+import { Route, Switch } from 'react-router-dom';
 import movies from 'data.json';
 import MovieItemsSection from 'components/movie-items-section/MovieItemsSection';
 import * as s from './app.css';
@@ -57,6 +60,7 @@ class App extends React.Component {
             (this.state.movies.filter(elem => elem.show_id === this.state.selectedShowId))[0];
         return (
             <div className={s.mainContainer + ' ' + s.clearfix}>
+
                 <Header
                     show={selectedItem}
                     searchBtnClick={this._searchBtnClick.bind(this)}
@@ -65,7 +69,16 @@ class App extends React.Component {
                     sortByDateClick={this._sortByDateClick.bind(this)}
                     sortRatingClick={this._sortRatingClick.bind(this)}
                     goToSearchClick={this._goToSearchClick.bind(this)}
-                />
+                >
+                    <Switch>
+                        <Route path="/film/:id" component={DetailPage} />
+                        <Route path="/search">
+                            <SearchForm
+                                searchBtnClick={this._searchBtnClick.bind(this)}
+                            />
+                        </Route>
+                    </Switch>
+                </Header>
                 <MovieItemsSection
                     items={this.state.movies}
                     onImageClick={this._onImageClick.bind(this)}

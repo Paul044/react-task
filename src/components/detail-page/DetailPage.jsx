@@ -4,7 +4,7 @@ import * as s from './DetailPage.css';
 
 class DetailPage extends React.Component {
     render() {
-        return (
+        /* return (
             <div className={s.detailPage}>
                 <img src={this.props.show.poster} alt="img" />
                 <div className={s.description}>
@@ -22,7 +22,8 @@ class DetailPage extends React.Component {
                     <div>{this.props.show.show_cast}</div>
                 </div>
             </div>
-        );
+        ); */
+        return this.props.match.params.id;
     }
 }
 
