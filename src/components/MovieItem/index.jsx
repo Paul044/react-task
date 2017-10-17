@@ -2,17 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import * as s from './MovieItem.css';
+import * as s from './style.css';
 
 class MovieItem extends React.Component {
-    onImageClick() {
-        this.props.onImageClick(this.props.movie.show_id);
-    }
     render() {
         return (<div className={s.movieItem}>
             <Link to={`/film/${this.props.movie.show_id}`}>
                 <img
-                    onClick={this.onImageClick.bind(this)}
                     src={this.props.movie.poster}
                     alt=""
                 />
@@ -27,12 +23,10 @@ class MovieItem extends React.Component {
 }
 
 MovieItem.propTypes = {
-    onImageClick: PropTypes.func,
     movie: PropTypes.object,
 };
 
 MovieItem.defaultProps = {
-    onImageClick: () => {},
     movie: {},
 };
 export default MovieItem;

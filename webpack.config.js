@@ -18,6 +18,7 @@ module.exports = {
     output: {
         filename: '[name].js',
         path:  path.join(__dirname, 'built'),
+        publicPath: '/',
     },
 
     resolve: {
@@ -28,7 +29,7 @@ module.exports = {
     devServer: {
         historyApiFallback: true,
         hot: true,
-        port: 3001
+        port: 3000
     },
 
     module: {

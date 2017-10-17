@@ -3,9 +3,7 @@ import ReactDom from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-
-import App from './components/app/app';
-
+import App from './components/App/index';
 
 const render = () => {
     ReactDom.render((
@@ -13,7 +11,8 @@ const render = () => {
             <AppContainer>
                 <App />
             </AppContainer>
-        </Router>),
+        </Router>
+    ),
     document.getElementById('app'),
     );
 };
@@ -22,5 +21,5 @@ const render = () => {
 render();
 
 if (module.hot) {
-    module.hot.accept('./components/app/app', render);
+    module.hot.accept('./components/App/index', render);
 }

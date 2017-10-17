@@ -44,7 +44,7 @@
 }
 .btn-row {
     width: 100%;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
 }
 .search-form button.active {
     background-color: #f55263;

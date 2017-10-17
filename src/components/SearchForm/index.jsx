@@ -1,12 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import * as s from './SearchForm.css';
+import * as s from './style.css';
 
 class SearchForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             selected: 'title',
+            inputValue: props.match.params.query
         };
     }
     titleBtnClick() {
@@ -19,11 +19,24 @@ class SearchForm extends React.Component {
             selected: 'director',
         });
     }
+
+    handleSearch() {
+        if (this.state.inputValue !== '') {
+            this.props.history.push('/search/' + this.state.inputValue + '?searchBy=' + this.state.selected);
+        }
+    }
+
+    updateInputValue(evt) {
+        this.setState({
+            inputValue: evt.target.value,
+        });
+    }
+
     render() {
         return (
             <div className={s.searchForm}>
                 <label>FIND YOUR MOVIE</label>
-                <input type="text" />
+                <input value={this.state.inputValue} onChange={evt => this.updateInputValue(evt)} />
                 <div className={s.btnRow}>
                     <label>SEARCH BY</label>
                     <button
@@ -36,7 +49,7 @@ class SearchForm extends React.Component {
                     >DIRECTOR</button>
                     <button
                         className={s.searchBtn}
-                        onClick={this.props.searchBtnClick.bind(this)}
+                        onClick={this.handleSearch.bind(this)}
                     >SEARCH</button>
                 </div>
             </div>
@@ -44,11 +57,4 @@ class SearchForm extends React.Component {
     }
 }
 
-SearchForm.propTypes = {
-    searchBtnClick: PropTypes.func,
-};
-
-SearchForm.defaultProps = {
-    searchBtnClick: () => {},
-};
 export default SearchForm;
