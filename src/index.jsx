@@ -2,16 +2,23 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
+import appReducer from './reducers/AppReducer';
 import App from './components/App/index';
+
+const store = createStore(appReducer);
 
 const render = () => {
     ReactDom.render((
-        <Router>
-            <AppContainer>
-                <App />
-            </AppContainer>
-        </Router>
+        <Provider store={store}>
+            <Router>
+                <AppContainer>
+                    <App />
+                </AppContainer>
+            </Router>
+        </Provider>
     ),
     document.getElementById('app'),
     );

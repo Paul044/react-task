@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import * as s from './style.css';
+
 
 class AdditionalInfo extends React.Component {
     constructor(props) {
@@ -14,13 +16,11 @@ class AdditionalInfo extends React.Component {
         this.setState({
             selected: 'date',
         });
-        this.props.sortByDateClick();
     }
     _sortRatingClick() {
         this.setState({
             selected: 'rating',
         });
-        this.props.sortRatingClick();
     }
 
     render() {
@@ -32,23 +32,30 @@ class AdditionalInfo extends React.Component {
                     render={() => (<div className={s.additionalInfo} />)} 
                 />
                 <Route
-                    path="/search"
+                    path="/"
                     render={() => (
                         <div className={s.additionalInfo}>
-                            <label>{this.props.items.length} movies found </label>
+                            <label>{this.props.movies && this.props.movies.length} movies found </label>
                             <div className={s.filters}>Sort by
                                 <span
                                     className={this.state.selected === 'date' ? s.active : ''}
-                                    onClick={this._sortByDateClick.bind(this)}
+                                    onClick={() => {this.props.sortMoviesByDate(); this.setState({ selected: 'date' }); }}
                                 >release date</span>
                                 <span
                                     className={this.state.selected === 'rating' ? s.active : ''}
-                                    onClick={this._sortRatingClick.bind(this)}
+                                    onClick={() => {this.props.sortMoviesByRating(); this.setState({ selected: 'rating' }); }}
                                 >raiting</span>
                             </div>
                         </div>
                     )}
                 />
+                
+            </Switch>
+        );
+    }
+}
+/*
+removing because of director property absence in API
                 <Route
                     path="/film"
                     render={() => (
@@ -57,11 +64,7 @@ class AdditionalInfo extends React.Component {
                         </div>
                     )}
                 />
-            </Switch>
-        );
-    }
-}
-
+*/
 AdditionalInfo.propTypes = {
     sortByDateClick: PropTypes.func,
     sortRatingClick: PropTypes.func,
@@ -73,4 +76,26 @@ AdditionalInfo.defaultProps = {
     sortRatingClick: () => {},
     items: [],
 };
-export default AdditionalInfo;
+
+
+const mapStateToProps = (state) => {
+    return {
+        movies: state.movies,
+    };
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        sortMoviesByDate: () => {
+            dispatch({
+                type: 'SORT_MOVIES_BY_DATE',
+            });
+        },
+        sortMoviesByRating: () => {
+            dispatch({
+                type: 'SORT_MOVIES_BY_RATING',
+            });
+        },
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdditionalInfo);
