@@ -16,6 +16,7 @@ module.exports = {
         "jsx-a11y/no-static-element-interactions": "off",
         "react/forbid-prop-types": "off",
         "jsx-a11y/no-noninteractive-element-interactions": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
     },
     "globals": {
         "document": true,
@@ -26,5 +27,8 @@ module.exports = {
                 "paths": ["src"]
             }
         }
+    },
+    "env": {
+        "jest": true
     }
 };

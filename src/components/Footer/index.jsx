@@ -1,11 +1,11 @@
 import React from 'react';
-import * as s from './style.css';
+import * as style from './style.css';
 
 class Footer extends React.Component {
     render() {
         return (
-            <div className={s.footer + ' ' + s.clearfix}>
-                <div className={s.logo}>
+            <div className={style.footer + ' ' + style.clearfix}>
+                <div className={style.logo}>
                     <span>netflixrullete</span>
                 </div>
             </div>

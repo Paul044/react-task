@@ -3,7 +3,7 @@ import DetailPage from 'components/DetailPage/index';
 import SearchForm from 'components/SearchForm/index';
 import { Route, Switch } from 'react-router-dom';
 
-import * as s from './style.css';
+import * as style from './style.css';
 
 class Header extends React.Component {
     handleGoToSearch() {
@@ -12,14 +12,14 @@ class Header extends React.Component {
 
     render() {
         return (
-            <div className={s.header}>
-                <div className={s.logo}>
+            <div className={style.header}>
+                <div className={style.logo}>
                     <span>netflixrullete</span>
                     <Route
                         path="/film"
                         render={() => (
                             <button
-                                className={s.searchBtn}
+                                className={style.searchBtn}
                                 onClick={this.handleGoToSearch.bind(this)}
                             >SEARCH
                             </button>

@@ -1,3 +1,5 @@
+import { YEAR_NUMBER_OF_DIGITSYEAR_NUMBER_OF_DIGITS } from 'components/constants';
+
 const appReducer = (state, action) => {
     switch (action.type) {
     case 'SET_MOVIE_ITEM_SECTION':

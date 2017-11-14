@@ -58,11 +58,11 @@ module.exports = {
             use: {
                 loader: 'babel-loader',
                 options: {
-                    plugins: ["transform-react-jsx"],
-                    presets: ['env']
-                }
-            }
-        }]
+                    plugins: ["transform-react-jsx", "transform-decorators-legacy", "transform-class-properties"],
+                    presets: ["es2015", "react"],
+                },
+            },
+        }],
     },
 
     devtool: 'source-map',

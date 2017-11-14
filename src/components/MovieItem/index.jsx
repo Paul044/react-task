@@ -1,23 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import {
+    URLS,
+    YEAR_NUMBER_OF_DIGITS,
+} from 'components/constants';
 
-import * as s from './style.css';
+import * as style from './style.css';
 
 class MovieItem extends React.Component {
     render() {
-        return (<div className={s.movieItem}>
+        return (<div className={style.movieItem}>
             <Link to={`/film/${this.props.movie.id}`}>
                 <img
-                    src={`https://image.tmdb.org/t/p/w1000${this.props.movie.poster_path}`}
+                    src={URLS.GET_IMAGE + this.props.movie.poster_path}
                     alt=""
                 />
             </Link>
             <div>
-                <span className={s.showTitle}>{this.props.movie.title}</span>
-                <span className={s.releaseYear}>{this.props.movie.release_date.slice(0, 4)}</span>
+                <span className={style.showTitle}>{this.props.movie.title}</span>
+                <span className={style.releaseYear}>{this.props.movie.release_date.slice(0, YEAR_NUMBER_OF_DIGITS)}</span>
             </div>
-            <div className={s.category}>{this.props.movie.category}</div>
+            <div className={style.category}>{this.props.movie.category}</div>
         </div>);
     }
 }

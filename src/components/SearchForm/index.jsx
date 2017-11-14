@@ -1,21 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as s from './style.css';
+import {
+    ACTIONS,
+    URLS,
+} from 'components/constants';
+import * as style from './style.css';
 
 function doSearch(setMoviesItemSection, location, selected) {
     if (location.pathname.slice(0, 8) === '/search/') {
         const query = location.pathname.slice(8);
         if (selected === 'director') {
-            fetch(`https://api.themoviedb.org/3/search/person?api_key=368dc4d247ee599c6bbb4611f3977a98&language=en-US&page=1&include_adult=false&query=${query}`).then(
+            fetch(URLS.SEARCH_BY_DIRECTOR + query).then(
                 data => data.json(),
             ).then(
-                data => fetch(`https://api.themoviedb.org/3/discover/movie?with_cast=${data.results[0].id}&api_key=368dc4d247ee599c6bbb4611f3977a98`).then(
+                data => fetch(URLS.WITH_CAST + data.results[0].id + URLS.WITH_CAST_KEY).then(
                     data => data.json(),
                 ).then(
                     data => setMoviesItemSection(data.results),
                 ));
         } else {
-            fetch(`https://api.themoviedb.org/3/search/movie?api_key=368dc4d247ee599c6bbb4611f3977a98&query=${query}`).then(
+            fetch(URLS.SEARCH_BY_TITLE + query).then(
                 data => data.json(),
             ).then(
                 data => setMoviesItemSection(data.results),
@@ -58,21 +62,21 @@ class SearchForm extends React.Component {
 
     render() {
         return (
-            <div className={s.searchForm}>
+            <div className={style.searchForm}>
                 <label>FIND YOUR MOVIE</label>
                 <input value={this.state.inputValue} onChange={evt => this.updateInputValue(evt)} />
-                <div className={s.btnRow}>
+                <div className={style.btnRow}>
                     <label>SEARCH BY</label>
                     <button
-                        className={this.state.selected === 'title' ? s.active : ''}
+                        className={this.state.selected === 'title' ? style.active : ''}
                         onClick={this.titleBtnClick.bind(this)}
                     >TITLE</button>
                     <button
-                        className={this.state.selected === 'director' ? s.active : ''}
+                        className={this.state.selected === 'director' ? style.active : ''}
                         onClick={this.directorBtnClick.bind(this)}
                     >PERSON</button>
                     <button
-                        className={s.searchBtn}
+                        className={style.searchBtn}
                         onClick={this.handleSearch.bind(this)}
                     >SEARCH</button>
                 </div>
@@ -90,14 +94,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setMoviesItemSection: (movies) => {
             dispatch({
-                type: 'SET_MOVIE_ITEM_SECTION',
+                type: ACTIONS.SET_MOVIE_ITEM_SECTION,
                 movies,
-            });
-        },
-        onClick2: (id) => {
-            dispatch({
-                type: 'INIT_EMPTY2',
-                id,
             });
         },
     };
