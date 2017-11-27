@@ -4,7 +4,9 @@
   "description": "SPA on React",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dev": "webpack -d",
+    "start": "babel-node ./src/server"
   },
   "author": "Pavel Vrubleuski",
   "license": "ISC",
@@ -25,6 +27,7 @@
     ]
   },
   "dependencies": {
+    "express": "^4.16.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -32,9 +35,11 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
-    "redux-form": "^7.0.4"
+    "redux-form": "^7.0.4",
+    "url-search-params-polyfill": "^2.0.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-jest": "^21.2.0",
     "babel-loader": "^7.1.2",

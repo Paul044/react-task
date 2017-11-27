@@ -1,15 +1,17 @@
 import React from 'react';
-import MovieItem from 'components/MovieItem/index';
-import AdditionalInfo from 'components/AdditionalInfo/index';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
     ACTIONS,
     URLS,
     URLS_SEARCH_LENGHT,
-} from 'components/constants';
+} from '../constants';
 
-import * as style from './style.css';
+import MovieItem from '../MovieItem/index';
+import AdditionalInfo from '../AdditionalInfo/index';
+
+// import * as style from './style.css';
+const style = {};
 
 class MovieItemsSection extends React.Component {
     componentDidMount() {
@@ -62,7 +64,7 @@ class MovieItemsSection extends React.Component {
 
     render() {
         return (
-            <div className={style.movieItemsSection + ' ' + style.clearfix}>         
+            <div className={style.movieItemsSection + ' ' + style.clearfix}>
                 <AdditionalInfo />
                 <Switch>
                     <Route

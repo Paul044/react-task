@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import {
     ACTIONS,
     URLS,
-} from 'components/constants';
-import * as style from './style.css';
+} from '../constants';
+// import * as style from './style.css';
+const style = {};
 
 function doSearch(setMoviesItemSection, location, selected) {
     if (location.pathname.slice(0, 8) === '/search/') {

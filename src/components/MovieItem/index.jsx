@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import {
     URLS,
     YEAR_NUMBER_OF_DIGITS,
-} from 'components/constants';
+} from '../constants';
 
-import * as style from './style.css';
+// import * as style from './style.css';
+const style = {};
 
 class MovieItem extends React.Component {
     render() {

@@ -9,31 +9,31 @@ module.exports = {
 
     entry: {
         app: [
-            'react-hot-loader/patch',
-            'webpack-dev-server/client?http://localhost:3000',
-            './index.jsx'
-        ]
+            //'webpack-dev-server/client?http://localhost:3000',
+            './index.jsx',
+        ],
     },
 
     output: {
-        filename: '[name].js',
-        path:  path.join(__dirname, 'built'),
+        filename: 'bundle.js',
+        path: path.resolve('./public/js/'),
         publicPath: '/',
     },
 
     resolve: {
         extensions: ['.js', '.jsx'],
-        modules: [path.resolve(__dirname, "src"), "node_modules"]
+        modules: [path.resolve(__dirname, "src"), "node_modules"],
     },
 
     devServer: {
         historyApiFallback: true,
-        hot: true,
-        port: 3000
+        hot: false,
+        port: 3000,
     },
 
     module: {
-        rules: [{
+        rules: [
+        {
             test: /\.css$/,
             use: [
                 'style-loader',
@@ -48,7 +48,7 @@ module.exports = {
         },
         {
             test: /\.(jpg|png)$/,
-            use: [{ 
+            use: [{
                 loader: 'url-loader',
             }]
         },
@@ -67,20 +67,18 @@ module.exports = {
 
     devtool: 'source-map',
 
-    watch: true,
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
         new HtmlWebpackPlugin({
             title: 'Test',
             hash: true,
-            template: './index.html'
+            template: './index.html',
         }),
         new ExtractTextPlugin({
-            filename: 'styles.css'
-          })
-    ]
+            filename: 'styles.css',
+        }),
+    ],
 
 
 };

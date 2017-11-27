@@ -5,9 +5,10 @@ import {
     YEAR_NUMBER_OF_DIGITS,
     ACTIONS,
     URLS,
-} from 'components/constants';
+} from '../constants';
 
-import * as style from './style.css';
+// import * as style from './style.css';
+const style = {};
 
 class DetailPage extends React.Component {
     componentDidMount() {
@@ -17,7 +18,7 @@ class DetailPage extends React.Component {
                 data => data.json(),
             ).then(
                 data => this.props.setDetailPage(data),
-            );      
+            );
         }
     }
 

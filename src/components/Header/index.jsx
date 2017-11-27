@@ -1,9 +1,10 @@
 import React from 'react';
-import DetailPage from 'components/DetailPage/index';
-import SearchForm from 'components/SearchForm/index';
+import DetailPage from '../DetailPage/index';
+import SearchForm from '../SearchForm/index';
 import { Route, Switch } from 'react-router-dom';
 
-import * as style from './style.css';
+// import * as style from './style.css';
+const style = {};
 
 class Header extends React.Component {
     handleGoToSearch() {

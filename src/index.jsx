@@ -8,7 +8,10 @@ import { createStore } from 'redux';
 import appReducer from './reducers/AppReducer';
 import App from './components/App/index';
 
-const store = createStore(appReducer);
+
+const preloadedState = window.__PRELOADED_STATE__;
+const store = createStore(appReducer, preloadedState);
+delete window.__PRELOADED_STATE__;
 
 const render = () => {
     ReactDom.render((

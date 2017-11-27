@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { ACTIONS } from 'components/constants';
+import { ACTIONS } from '../constants';
 
-import * as style from './style.css';
+//import * as style from './style.css';
+const style = {};
 
 
 class AdditionalInfo extends React.Component {
@@ -51,7 +52,7 @@ class AdditionalInfo extends React.Component {
                         </div>
                     )}
                 />
-                
+
             </Switch>
         );
     }

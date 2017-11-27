@@ -1,9 +1,10 @@
 import React from 'react';
-import Header from 'components/Header/index';
-import Footer from 'components/Footer/index';
-import MovieItemsSection from 'components/MovieItemsSection/index';
+import Header from '../Header/index';
+import Footer from '../Footer/index';
+import MovieItemsSection from '../MovieItemsSection/index';
 import { Route } from 'react-router-dom';
-import * as style from './style.css';
+// import * as style from './style.css';
+const style = {};
 
 class App extends React.Component {
     render() {
